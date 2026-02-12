@@ -6,8 +6,10 @@
   let TelegramLink = (getHtml + getHtml1).match(/t\.me\/.*?(?=")/g)
   console.log(TelegramLink)
   TelegramLink = TelegramLink.map(url => {
-    return decodeURIComponent(url).replace(/<.+| .+/g, '')
-  })
+    try {
+      return decodeURIComponent(url).replace(/(<| |&amp;|\?fbclid).+/g, '')
+    } catch {}
+  }).filter(x => x !== 't.me/' && x)
 
   const groupLink = Array.from(new Set(TelegramLink))
   let str = ''
