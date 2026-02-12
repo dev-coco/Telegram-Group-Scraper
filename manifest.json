@@ -3,7 +3,7 @@
   "name": "获取 Telegram 小组",
   "description": "快速列印 Telegram 小组链接，获取小组名字和头像。",
   "author": "Raz1ner",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "action": {
     "default_icon": "icon.png"
   },

@@ -1,9 +1,13 @@
 /* global alert */
-(function () {
+;(function () {
   const html = document.documentElement.outerHTML
   const getHtml = html.replace(/invite\//g, '').replace(/%3A/g, ':').replace(/%2F/g, '/')
   const getHtml1 = html.replace(/<.*?>/g, '')
-  const TelegramLink = (getHtml + getHtml1).match(/t\.me\/.*?(?=")/g)
+  let TelegramLink = (getHtml + getHtml1).match(/t\.me\/.*?(?=")/g)
+  console.log(TelegramLink)
+  TelegramLink = TelegramLink.map(url => {
+    return decodeURIComponent(url).replace(/<.+| .+/g, '')
+  })
 
   const groupLink = Array.from(new Set(TelegramLink))
   let str = ''
